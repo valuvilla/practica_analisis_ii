@@ -31,3 +31,8 @@ u(x) = x*log(x) # Cambio de variable
 @vars y real=true
 g(y) = j(x)(u(x) => y, diff(u(x), x) => 1) # Cambio de variable
 integrate(g(y))(y => u(x)) # Desacer el cambio de variable
+
+# Resolver 2^(-1)-x^2/(x^3+1) = 0
+@vars x real=true
+h(x) = 2^(-1)-x^2/(x^3+1)
+solve(h(x))
