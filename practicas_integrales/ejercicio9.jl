@@ -13,3 +13,7 @@ ws = unzip(S.(us, vs')) # ' es la transpuesta
 using PlotlyJS
 plotlyjs()
 surface(ws...)
+
+
+# Volumen del solido de revolucion
+N(integrate(PI*f(x)^2, 0, 2PI))
