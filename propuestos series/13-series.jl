@@ -1,50 +1,25 @@
-
-# Constantes
-g = 9.81
-R = 6371000
-
-# Función para calcular la fuerza F
-function calcular_fuerza(h)
-    # Expresión de F como serie de potencias
-    F = (g * R) / (R + h)^2
-    return F
+# Serie de Taylor de la función exponencial
+using SymPy
+@vars x real=true
+p(n) = series(exp(x), x, 0, n+1).removeO()
+for i = 1:5
+    println("Suma funcional parcial de grado $(2i-1): $(p(2i-1))")
 end
 
-# Función para calcular la aproximación de la fuerza F usando el teorema de la serie alternada
-function calcular_aproximacion(h)
-    n = 0
-    F_aprox = 0.0
-    
-    while true
-        # Término de la serie alterna
-        termino = ((-1)^n) * (g * R / (R^2)) * ((h / R)^n)
-        
-        # Actualizar la aproximación de la fuerza
-        F_aprox += termino
-        
-        # Verificar si se alcanza el criterio de convergencia (1%)
-        if abs(termino) < 0.01 * F_aprox
-            break
-        end
-        
-        n += 1
-    end
-    
-    return F_aprox
+# TERMINO GENERAL: x^n/n!
+# Serie de Taylor de la función exponencial
+@vars n int=true
+
+c(n) = 1/factorial(big(n))
+
+error = 10^(-50)
+i = 0
+while abs(c(i)) >= error
+    i += 1
 end
 
-# Calcular el valor máximo de h para el cual la aproximación difiere en menos del 1%
-h_max = R  # Valor inicial para h_max
+println("Suma parcial de orden $i")
+println("Aproximación de exp(1/2): $(sum(c, 1:i))")
 
-while true
-    F_real = calcular_fuerza(h_max)
-    F_aprox = calcular_aproximacion(h_max)
-    
-    if abs(F_real - F_aprox) / F_real <= 0.01
-        break
-    end
-    
-    h_max -= 1
-end
 
-println("El valor máximo de h para el cual la aproximación difiere en menos del 1% es: ", h_max)
+

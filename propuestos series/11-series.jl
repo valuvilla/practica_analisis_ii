@@ -1,15 +1,6 @@
 using SymPy
-
-@vars n int=true
-c(n) = exp(n)
-limit(abs(c(n)/c(n+1)), n => Inf)
-
-# RADIO DE CONVERGENCIA ES 1, POR LO TANTO 
-# EL INTERVALO DE CONVERGENCIA ES [-1,1]
-error = 10^-50
-i = 0
-while abs(c(i)) >= error
-    i += 1
+@vars x real=true
+p(n) = series(exp(n), x, 0, n+1).removeO()
+for i = 1:5
+    println("Suma funcional parcial de grado $(2i-1): $(p(2i-1))")
 end
-println("Suma parcial de orden $i")
-println("Aproximación de \sqrt(e)": $(sum(c, 1:i)))
