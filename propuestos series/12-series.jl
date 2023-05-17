@@ -1,11 +1,9 @@
-using Plots, SymPy, Latexify
-@vars t real=true
-a(t,n) = sin((2n-1)t)/(2n-1)^2
-N = 10
-an = [a(t,n) for n=1:N]
-An = cumsum(an)
-plots = []  # Array para guardar las gráficas
-for i in An
-    push!(plots, plot(i, label=latexify(i), legend=:outertop))
-end
-plot(plots..., layout=(5,2), size=(800,1600))
+
+using SymPy
+@vars n int=true
+t(n) = 1/((n)*5^(n))
+limit(abs(t(n)/t(n+1)), n => Inf)
+
+c(n)=(2^n)/sqrt(n+3)
+
+limit(abs(c(n)/c(n+1)), n => Inf)
