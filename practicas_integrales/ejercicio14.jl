@@ -16,8 +16,8 @@ cy = 1/2 * integrate(f(x)^2-h(x)^2, a, b) / integrate(f(x)-h(x), a, b)
 # Dibujamos el centroide
 scatter!((cx,cy), label = "centroide")
 
-
+# eje x
 2*PI*cy*integrate(f(x)-h(x), a, b)
 
-
+# eje y
 2*PI*cx*integrate(f(x)-h(x), a, b)

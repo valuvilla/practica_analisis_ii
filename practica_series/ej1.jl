@@ -4,9 +4,14 @@ using Plots  # Para el dibujo de gráficas.
 using LaTeXStrings  # Para usar código LaTeX en los gráficos.
 
 
-a(n)=1/2^n
-an=[a(n) for n=1:50]
+a(n)=1/(big(n)*2^big(n))
+an=[a(n) for n=1:100]
 An=cumsum(an)
+println("La suma parcial de orden 50 es $(An[100])")
+
+# 
+
+
 
 scatter(An, legend=false)
 
