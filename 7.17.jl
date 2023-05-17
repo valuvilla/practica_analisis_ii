@@ -9,7 +9,7 @@ using PrettyTables # Para formatear tablas.
 f(x)= 1/sqrt(2*pi)*exp(-x^2/2)
 plot(f(x), -5, 5, label = L"$f(x)=\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$")
 #ahora calculamos el area desde -oo hasta oo
-integrate(f(x), -oo, oo)
+N(integrate(f(x), -oo, oo))
 # me ha dado de resultado el siguinte:0.398942280401433⋅√2⋅√π
 # ahora lo voy a operar para que me de la opreacion real
 
