@@ -12,4 +12,4 @@ while abs(c(i)) >= error
     i += 1
 end
 println("Suma parcial de orden $i")
-println("Aproximación de π: $(4*sum(c, 1:i))")
+println("Aproximación de \sqrt(e)": $(sum(c, 1:i)))
