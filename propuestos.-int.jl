@@ -1,5 +1,24 @@
-using SymPy
+using SymPy, Plots
 @vars x real = true
+
+h(x)=sqrt(log(x))
+# Suma de Riemann superior
+a=1
+b=2
+n=100
+Δx = (b-a)/n
+sum([h(a+i*Δx)*Δx for i = 1:n])
+
+
+# area encerrada en dos funciones
+u(x)=sin(x)
+v(x)=cos(x)
+raices= solve(u(x)-v(x), x)
+plot(u, 0, 2*pi, ylims=(0,1), fillrange=0, fillalpha=0.5, label="sin(x)", color=:blue)
+plot!(v, 0, 2*pi, ylims=(0,1), fillrange=0, fillalpha=0.5, label="cos(x)", color=:green)
+# linea verticale en x=raices[1]
+plot!([raices[1], raices[1]], [0, 1], color=:red)
+sol= N(integrate(abs(u(x)-v(x)), (x, 0, 2*pi)))
 
 f(x)= (exp(-x^2/2))/sqrt(2*pi)
 # area total bajo la curva
