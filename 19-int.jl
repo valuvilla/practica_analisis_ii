@@ -26,4 +26,5 @@ scatter!((cx,cy), label = "centroide")
 
 # eje y
 using QuadGK
-sol=quadgk(2*PI*cx*abs(f(x)-h(x)), a, b, rtol=1e-10)[1]
+solucion = quadgk(2*PI*cx*abs(f(x)-h(x)), a, b, rtol = 10^-10)
+N(solucion[1])

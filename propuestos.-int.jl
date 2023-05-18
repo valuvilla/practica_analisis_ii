@@ -65,3 +65,6 @@ println("La media de la distribución exponencial es: $media")
 # Calcular la mediana
 mediana = quantile(dist, 0.5)
 println("La mediana de la distribución exponencial es: $mediana")
+
+
+using SymPy, Plots
